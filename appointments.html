@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - MedilinkPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedilinkPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="appointments.html" class="active">Appointments</a></li>
+                    <li><a href="medical-records.html">Medical Records</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="period-tracker.html">Period Tracker</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="appointments-section">
+            <div class="container">
+                <h2>Manage Appointments</h2>
+                
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="schedule">Schedule New</button>
+                    <button class="tab-button" data-tab="upcoming">Upcoming</button>
+                    <button class="tab-button" data-tab="past">Past Appointments</button>
+                </div>
+                
+                <div class="tab-content active" id="scheduleTab">
+                    <div class="appointment-form-card">
+                        <h3>Schedule New Appointment</h3>
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="doctor">Select Doctor</label>
+                                <select id="doctor" name="doctor" required>
+                                    <option value="">Select a doctor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reason">Reason for Visit</label>
+                                <textarea id="reason" name="reason" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+                        </form>
+                        
+                        <div class="ai-recommendation">
+                            <h4>AI Doctor Recommendation</h4>
+                            <div class="form-group">
+                                <label for="symptoms">Describe your symptoms (comma separated)</label>
+                                <input type="text" id="symptoms" placeholder="e.g., headache, fever, cough">
+                            </div>
+                            <button onclick="getAIRecommendations()" class="btn btn-secondary">Get Doctor Recommendations</button>
+                            <div id="aiRecommendations"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="upcomingTab">
+                    <h3>Upcoming Appointments</h3>
+                    <div id="upcomingAppointmentsList" class="appointments-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="pastTab">
+                    <h3>Past Appointments</h3>
+                    <div id="pastAppointmentsList" class="appointments-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedilinkPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/appointments.js"></script>
+</body>
+</html>

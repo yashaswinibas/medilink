@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - MedilinkPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedilinkPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="medical-records.html">Medical Records</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                    <li><a href="period-tracker.html">Period Tracker</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="container">
+                <h2>My Profile</h2>
+                
+                <div class="profile-container">
+                    <!-- Profile Overview -->
+                    <div class="profile-overview">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <div class="avatar-placeholder">
+                                    <span id="avatarInitials">JD</span>
+                                </div>
+                            </div>
+                            <div class="profile-info">
+                                <h3 id="profileName">John Doe</h3>
+                                <p id="profileEmail">john.doe@email.com</p>
+                                <p class="member-since">Member since <span id="memberSince">2023</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-card">
+                                <h4>Appointments</h4>
+                                <p id="totalAppointments">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Medical Records</h4>
+                                <p id="totalRecords">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Active Since</h4>
+                                <p id="lastActive">Today</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Tabs -->
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="personal">Personal Information</button>
+                        <button class="profile-tab" data-tab="medical">Medical Information</button>
+                        <button class="profile-tab" data-tab="security">Security</button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tab-contents">
+                        <!-- Personal Information Tab -->
+                        <div class="tab-content active" id="personalTab">
+                            <h3>Personal Information</h3>
+                            <form id="personalInfoForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="editName">Full Name</label>
+                                        <input type="text" id="editName" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editEmail">Email</label>
+                                        <input type="email" id="editEmail" name="email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="editPhone">Phone Number</label>
+                                        <input type="tel" id="editPhone" name="phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editDob">Date of Birth</label>
+                                        <input type="date" id="editDob" name="dob" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="editGender">Gender</label>
+                                        <select id="editGender" name="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editAddress">Address</label>
+                                        <input type="text" id="editAddress" name="address" placeholder="Enter your address">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Medical Information Tab -->
+                        <div class="tab-content" id="medicalTab">
+                            <h3>Medical Information</h3>
+                            <form id="medicalInfoForm">
+                                <div class="form-group">
+                                    <label for="bloodType">Blood Type</label>
+                                    <select id="bloodType" name="blood_type">
+                                        <option value="">Select Blood Type</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="allergies">Allergies</label>
+                                    <textarea id="allergies" name="allergies" rows="3" placeholder="List any allergies (separate with commas)"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="medications">Current Medications</label>
+                                    <textarea id="medications" name="medications" rows="3" placeholder="List current medications"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="conditions">Medical Conditions</label>
+                                    <textarea id="conditions" name="conditions" rows="3" placeholder="List any chronic conditions"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="emergencyContact">Emergency Contact</label>
+                                    <input type="text" id="emergencyContact" name="emergency_contact" placeholder="Name and phone number">
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Medical Info</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div class="tab-content" id="securityTab">
+                            <h3>Security Settings</h3>
+                            
+                            <div class="security-section">
+                                <h4>Change Password</h4>
+                                <form id="changePasswordForm">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Current Password</label>
+                                        <input type="password" id="currentPassword" name="current_password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password</label>
+                                        <input type="password" id="newPassword" name="new_password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmNewPassword">Confirm New Password</label>
+                                        <input type="password" id="confirmNewPassword" name="confirm_new_password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Change Password</button>
+                                </form>
+                            </div>
+                            
+                            <div class="security-section">
+                                <h4>Account Actions</h4>
+                                <div class="account-actions">
+                                    <button class="btn btn-secondary" onclick="exportData()">Export My Data</button>
+                                    <button class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedilinkPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

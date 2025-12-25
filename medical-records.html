@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records - MedilinkPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedilinkPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="medical-records.html" class="active">Medical Records</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="period-tracker.html">Period Tracker</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="medical-records-section">
+            <div class="container">
+                <h2>Medical Records</h2>
+                
+                <div class="records-header">
+                    <button class="btn btn-primary" onclick="showAddRecordForm()">Add New Record</button>
+                    <div class="search-box">
+                        <input type="text" id="searchRecords" placeholder="Search records...">
+                    </div>
+                </div>
+
+                <!-- Add Record Form -->
+                <div id="addRecordForm" class="record-form" style="display: none;">
+                    <h3>Add Medical Record</h3>
+                    <form id="newRecordForm">
+                        <div class="form-group">
+                            <label for="recordType">Record Type</label>
+                            <select id="recordType" name="record_type" required>
+                                <option value="">Select type</option>
+                                <option value="Consultation">Consultation</option>
+                                <option value="Lab Test">Lab Test</option>
+                                <option value="Prescription">Prescription</option>
+                                <option value="Diagnosis">Diagnosis</option>
+                                <option value="Procedure">Procedure</option>
+                                <option value="Vaccination">Vaccination</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="recordDate">Date</label>
+                            <input type="date" id="recordDate" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recordDoctor">Doctor</label>
+                            <input type="text" id="recordDoctor" name="doctor" placeholder="Doctor's name">
+                        </div>
+                        <div class="form-group">
+                            <label for="recordDescription">Description</label>
+                            <textarea id="recordDescription" name="description" rows="4" placeholder="Enter details about the medical record..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Record</button>
+                            <button type="button" class="btn btn-secondary" onclick="hideAddRecordForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Records Filter -->
+                <div class="records-filter">
+                    <label>Filter by type:</label>
+                    <select id="typeFilter" onchange="filterRecords()">
+                        <option value="all">All Records</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Lab Test">Lab Test</option>
+                        <option value="Prescription">Prescription</option>
+                        <option value="Diagnosis">Diagnosis</option>
+                        <option value="Procedure">Procedure</option>
+                        <option value="Vaccination">Vaccination</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Records List -->
+                <div class="records-list" id="recordsList">
+                    <!-- Records will be loaded here -->
+                </div>
+
+                <!-- No Records Message -->
+                <div id="noRecords" style="display: none;">
+                    <div class="empty-state">
+                        <h3>No Medical Records Found</h3>
+                        <p>You don't have any medical records yet. Add your first record to get started.</p>
+                        <button class="btn btn-primary" onclick="showAddRecordForm()">Add First Record</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedilinkPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/records.js"></script>
+</body>
+</html>

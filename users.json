@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "sandhya",
+    "email": "sandhyasandhya67890@gmail.com",
+    "password": "sandhya123",
+    "dob": "2004-05-28",
+    "gender": "Female",
+    "phone": "8139969270",
+    "created_at": "2025-11-04T17:36:24.591970",
+    "last_login": "2025-11-04T18:05:14.255407"
+  },
+  {
+    "id": 2,
+    "name": "YASHASWINI K.B",
+    "email": "yashaswinibasavaraju028@gmail.com",
+    "password": "Yashu@2004",
+    "dob": "2004-07-20",
+    "gender": "Female",
+    "phone": "07795808804",
+    "address": "",
+    "created_at": "2025-11-04T22:57:58.517073",
+    "updated_at": "2025-11-04T22:57:58.517101",
+    "last_login": "2025-11-05T13:06:58.506282"
+  },
+  {
+    "id": 3,
+    "name": "uma",
+    "email": "umadevi@gmail.com",
+    "password": "Uma@2004",
+    "dob": "1998-07-20",
+    "gender": "Female",
+    "phone": "9845218531",
+    "address": "",
+    "created_at": "2025-11-05T13:08:09.842884",
+    "updated_at": "2025-11-05T13:08:09.842898",
+    "last_login": "2025-11-15T11:01:59.525311"
+  }
+]

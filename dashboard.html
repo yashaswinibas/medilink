@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MedilinkPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedilinkPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="medical-records.html">Medical Records</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="period-tracker.html">Period Tracker</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <h2>Welcome, <span id="userName">Patient</span></h2>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Upcoming Appointments</h3>
+                        <div id="upcomingAppointments">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <a href="appointments.html" class="btn btn-secondary">View All</a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <a href="appointments.html" class="action-btn">Book Appointment</a>
+                            <a href="medical-records.html" class="action-btn">View Records</a>
+                            <a href="period-tracker.html" class="action-btn">Period Tracker</a>
+                            <a href="profile.html" class="action-btn">Edit Profile</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3>Health Summary</h3>
+                        <div id="healthSummary">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3>AI Health Assistant</h3>
+                        <div class="ai-chat-preview">
+                            <p>Ask our AI assistant about your health concerns</p>
+                            <div id="chatMessagesPreview"></div>
+                            <input type="text" id="chatInputPreview" placeholder="Type your question...">
+                            <button id="sendMessagePreview" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedilinkPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/ai-chat.js"></script>
+</body>
+</html>

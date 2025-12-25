@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracker - MedilinkPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedilinkPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="medical-records.html">Medical Records</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="period-tracker.html" class="active">Period Tracker</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="period-tracker-section">
+            <div class="container">
+                <h2>Period Tracker</h2>
+                
+                <div class="tracker-overview">
+                    <div class="cycle-card">
+                        <h3>Current Cycle</h3>
+                        <div class="cycle-info">
+                            <div class="cycle-stat">
+                                <label>Cycle Day</label>
+                                <span id="currentCycleDay">-</span>
+                            </div>
+                            <div class="cycle-stat">
+                                <label>Cycle Length</label>
+                                <span id="averageCycleLength">- days</span>
+                            </div>
+                            <div class="cycle-stat">
+                                <label>Period Length</label>
+                                <span id="averagePeriodLength">- days</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prediction-card">
+                        <h3>Predictions</h3>
+                        <div class="prediction-info">
+                            <div class="prediction-item">
+                                <label>Next Period</label>
+                                <span id="nextPeriodDate">-</span>
+                            </div>
+                            <div class="prediction-item">
+                                <label>Fertile Window</label>
+                                <span id="fertileWindow">-</span>
+                            </div>
+                            <div class="prediction-item">
+                                <label>Ovulation Day</label>
+                                <span id="ovulationDate">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-tracker">
+                    <button class="btn btn-primary" onclick="showLogPeriodForm()">Log Period</button>
+                    <button class="btn btn-secondary" onclick="showSymptomsForm()">Log Symptoms</button>
+                    <button class="btn btn-secondary" onclick="generateReport()">Generate Report</button>
+                </div>
+
+                <!-- Log Period Form -->
+                <div id="logPeriodForm" class="tracker-form" style="display: none;">
+                    <h3>Log Period</h3>
+                    <form id="periodForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="periodStart">Start Date</label>
+                                <input type="date" id="periodStart" name="start_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="periodEnd">End Date</label>
+                                <input type="date" id="periodEnd" name="end_date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Symptoms (select all that apply)</label>
+                            <div class="symptoms-checklist">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="cramps"> Cramps
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="headache"> Headache
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="bloating"> Bloating
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="mood_swings"> Mood Swings
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="fatigue"> Fatigue
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="back_pain"> Back Pain
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="breast_tenderness"> Breast Tenderness
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="symptoms" value="acne"> Acne
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="periodNotes">Notes</label>
+                            <textarea id="periodNotes" name="notes" rows="3" placeholder="Any additional notes about this cycle..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Period</button>
+                            <button type="button" class="btn btn-secondary" onclick="hideLogPeriodForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Calendar View -->
+                <div class="calendar-section">
+                    <h3>Cycle Calendar</h3>
+                    <div class="calendar-controls">
+                        <button id="prevMonth" class="btn btn-secondary">&larr; Previous</button>
+                        <h4 id="currentMonth">Month Year</h4>
+                        <button id="nextMonth" class="btn btn-secondary">Next &rarr;</button>
+                    </div>
+                    <div id="calendar" class="calendar">
+                        <!-- Calendar will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Cycle History -->
+                <div class="history-section">
+                    <h3>Cycle History</h3>
+                    <div id="cycleHistory" class="history-list">
+                        <!-- Cycle history will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- No Data Message -->
+                <div id="noCycleData" class="empty-state" style="display: none;">
+                    <h3>No Cycle Data Yet</h3>
+                    <p>Start tracking your menstrual cycle to get predictions and insights.</p>
+                    <button class="btn btn-primary" onclick="showLogPeriodForm()">Log Your First Period</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedilinkPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/period-tracker.js"></script>
+</body>
+</html>
